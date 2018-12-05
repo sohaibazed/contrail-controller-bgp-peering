@@ -135,4 +135,4 @@ For the policies to take effect, last step is to associate tags to contrail obje
 1. Go to Monitor> Control Nodes> <<controller name>> Routes> 
 2. Select a route advertised by the other controller. 
 3. You will see each route carries tag information 
-![Web Console](Images/uc1.5.png)
+![Web Console](Images/uc1.6.png)
