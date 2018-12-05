@@ -72,3 +72,19 @@ host> vagrant ssh srv2
 srv2> sh /vagrant/scripts/basic-sanity-test-controller-2.sh
 srv2> exit
 ```
+
+## Configuring BGP
+### Add BGP router
+1. Log into Contrail UI for controller1  https://192.168.100.21:8143
+2. Go to Configure> BGP Routers > + 
+3. Add controller2 as a BGP router in controller 1 
+4. Repeat step 1,2 and 3 on controller 2
+![Web Console](/Images/cc-01.png)
+
+### Add Route targets in VN01 Virtual Network
+1. Go to Configure> Netowkring> Networks and edit "VN01"
+2. Add a Route Target to this virtual network. 
+3. Use the same route target in Controller2 VN01
+
+
+
