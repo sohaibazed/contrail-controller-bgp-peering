@@ -1,0 +1,51 @@
+global_configuration:
+  CONTAINER_REGISTRY: hub.juniper.net/contrail
+  CONTAINER_REGISTRY_USERNAME: << username >>
+  CONTAINER_REGISTRY_PASSWORD: << password >>
+provider_config:
+  bms:
+    ssh_user: root
+    ssh_pwd: Juniper123
+    ntp_server: pool.ntp.org
+instances:
+  srv1:
+    ip: 192.168.100.22
+    provider: bms
+    ssh_pwd: Juniper123
+    roles:
+      config:
+      config_database:
+      control:
+      webui:
+      analytics:
+      analytics_database:
+      openstack:
+      openstack_compute:
+      vrouter:
+contrail_configuration:
+  #CONTRAIL_CONTAINER_TAG: 5.0.1-0.214-ocata  
+  CONTRAIL_VERSION: 5.0.2-0.360-ocata
+  CLOUD_ORCHESTRATOR: openstack
+  RABBITMQ_NODE_PORT: 5673
+  VROUTER_GATEWAY: 192.168.100.10
+  ENCAP_PRIORITY: VXLAN,MPLSoUDP,MPLSoGRE
+  AUTH_MODE: keystone
+  KEYSTONE_AUTH_HOST: 192.168.100.22
+  KEYSTONE_AUTH_URL_VERSION: /v3
+  CONTROLLER_NODES: 192.168.100.22
+  CONTROL_NODES: 192.168.100.22
+  CONFIG_NODEMGR__DEFAULTS__minimum_diskGB: 100
+  DATABASE_NODEMGR__DEFAULTS__minimum_diskGB: 100
+kolla_config:
+  customize:
+    nova.conf: |
+      [libvirt]
+      virt_type=qemu
+      cpu_mode=none
+  kolla_globals:
+    enable_haproxy: "no"
+    enable_ironic: "no"
+    enable_swift: "no"
+
+kolla_passwords:
+    keystone_admin_password: contrail123
