@@ -121,3 +121,18 @@ For the policies to take effect, last step is to associate tags to contrail obje
 2. Assign Application, Site and Deployment tags to each VM port
 
 ![Web Console](Images/uc1.5.png)
+
+| Deployment # | VM Name | IP Address | Tags |
+| ------------ | ------- | ---------- | ---- |
+| 1 | vm01vn01controller01 | 10.1.1.3   | app |
+| 1 | vm02vn01controller01 | 10.1.1.4   | db  |
+| 1 | vm03vn01controller01 | 10.1.1.5   | app |
+| 2 | vm01vn01controller02 | 10.1.1.100 | db  |
+| 2 | vm02vn01controller02 | 10.1.1.101 | web |
+| 2 | vm03vn01controller02 | 10.1.1.102 | web |
+
+### Testing
+1. Go to Monitor> Control Nodes> <<controller name>> Routes> 
+2. Select a route advertised by the other controller. 
+3. You will see each route carries tag information 
+![Web Console](Images/uc1.5.png)
