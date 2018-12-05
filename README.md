@@ -41,7 +41,7 @@ Configure FireFox FoxyProxy add-on by configuring "127.0.0.1" & port 1080 as Sco
 
 ![Web Console](/Images/FoxyProxy-Configure.png)
 
-Now enable FoxyProxy add-on by selecting the profile created earlier and open Contrail GUI using IP address of Vagrant VM https://30.30.30.31:8143
+Now enable FoxyProxy add-on by selecting the profile created earlier and open Contrail GUI using IP address of Vagrant VM https://192.168.100.21:8143
 
 ![Web Console](/Images/FoxyProxy-Contrail-GUI-k8s.png)
 
@@ -53,3 +53,22 @@ Now enable FoxyProxy add-on by selecting the profile created earlier and open Co
 | 1 | contrail  | https://192.168.100.21:8143 | admin    | contrail123 |
 | 2 | openstack | http://192.168.100.22       | admin    | contrail123 |
 | 2 | contrail  | https://192.168.100.22:8143 | admin    | contrail123 |
+
+## Create workloads
+
+for this examples use basic-sanity-test-controller-<<1 or 2>>.sh scripts to create workloads. the scripts will 
+1. Install Openstack Python libraries
+2. Download and create Cirros images in Glance
+3. Create Openstack flavors.
+4. Create Openstack Virtual network "VN01"
+5. Create three VMs using Virtual Netowkr VN01
+
+```bash
+host> vagrant ssh srv1
+srv1> sh /vagrant/scripts/basic-sanity-test-controller-1.sh
+srv1> exit
+
+host> vagrant ssh srv2
+srv2> sh /vagrant/scripts/basic-sanity-test-controller-2.sh
+srv2> exit
+```
