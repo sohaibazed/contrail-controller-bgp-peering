@@ -41,7 +41,7 @@ openstack flavor list
 
 # Create Test VM and Test vRouter Connection
 openstack network create VN-01
-openstack subnet create --subnet-range 10.1.1.0/24 --network VN-01 VN01-VN-subnet
+openstack subnet create --subnet-range 10.1.1.0/24 --network VN-01 --allocation-pool start=10.1.1.100,end=10.1.1.200 VN01-VN-subnet
 
 openstack server create --flavor m1.tiny --image 'cirros2' \
     --nic net-id=VN-01 \
