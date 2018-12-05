@@ -86,5 +86,38 @@ srv2> exit
 2. Add a Route Target to this virtual network. 
 3. Use the same route target in Controller2 VN01
 
+## Configure Tag-based Contrail Security
+### Create Tags
 
+1. Go to Configure> Tags> Global tags> +
+2. Create the following tags
+  * Application: HR-HCM
+  * Deployment: Development, Production
+  * Tier= web, app, db
 
+![Web Console](Images/uc1.1.png)
+
+### Writing Policies
+
+1. Create service group to allow tcp, udp and icmp traffic for each tier.
+
+![Web Console](Images/uc1.2.png)
+
+2. Go to Configure> Security> Global Policies> +
+3. Create Application Policy Set (APS) and select application tag as "HR-HCM"
+
+![Web Console](Images/uc1.3.png)
+
+4. Associate firewall policy and the following rules
+  * web > app
+  * app > db
+
+![Web Console](Images/uc1.4.png)
+
+### Associate tags to contrail objects
+For the policies to take effect, last step is to associate tags to contrail objects. These can be attached at the project, virtual network or virtual machine interface (VMI) level. The hierarchy is such that more granular takes precedence.
+
+1. Go to Configure> Netoworking> Ports 
+2. Assign Application, Site and Deployment tags to each VM port
+
+![Web Console](Images/uc1.5.png)
